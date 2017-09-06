@@ -32,7 +32,6 @@ class App:Application() {
         Thread{
             Fresco.initialize(this)
         }.start()
-
     }
 
     fun initBugly(){
@@ -40,6 +39,7 @@ class App:Application() {
         Beta.largeIconId = R.mipmap.ic_launcher
         Beta.canShowUpgradeActs.add(MainActivity::class.java)
         Beta.smallIconId = R.drawable.ic_update_black_24dp
+        Beta.upgradeDialogLayoutId = R.layout.upgrade_dialog
         Beta.storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         Bugly.init(applicationContext,Constant.BUGLY_ID,true)
     }

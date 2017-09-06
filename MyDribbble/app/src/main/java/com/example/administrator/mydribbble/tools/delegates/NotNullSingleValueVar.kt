@@ -12,7 +12,7 @@ class NotNullSingleValueVar<T> : ReadWriteProperty<Any?, T> {
 
     //Getter函数 如果已经被初始化，则会返回一个值，否则会抛异常。
     override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        return value ?: throw IllegalStateException("this object not initialized")
+        return value ?: throw IllegalStateException("this object not initialized") as Throwable
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {

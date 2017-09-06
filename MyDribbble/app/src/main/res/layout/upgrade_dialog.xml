@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/margin_24"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/beta_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="beta_title"
+                android:text="@string/app_name"
+                android:textSize="@dimen/test_24sp"
+                />
+
+            <TextView
+                android:id="@+id/beta_upgrae_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:tag="beta_upgrade_info"
+                android:text="dadadadad"
+                />
+
+            <TextView
+                android:id="@+id/beta_upgrade_feature"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:tag="beta_upgrade_feature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dadadadad"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_16dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/beta_cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="beta_cancel_button"
+                android:text="@string/cancel"
+                android:textColor="@color/caption"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                />
+
+            <Button
+                android:id="@+id/beta_confirm_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:tag="beta_confirm_button"
+                android:text="@string/update"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
