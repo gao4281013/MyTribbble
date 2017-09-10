@@ -2,7 +2,7 @@ package com.example.administrator.mydribbble.application
 
 import android.app.Application
 import android.os.Environment
-import com.example.administrator.mydribbble.MainActivity
+import com.example.administrator.mydribbble.view.MainActivity
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.tools.Constant
 import com.example.administrator.mydribbble.tools.delegates.NotNullSingleValueVar
@@ -10,7 +10,6 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.liulishuo.filedownloader.FileDownloader
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
-import org.jetbrains.annotations.NotNull
 
 /**
  * Created by Administrator on 2017/9/5 0005.

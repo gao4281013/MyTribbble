@@ -2,4 +2,11 @@
     <string name="app_name">MyDribbble</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="create_bunket">create a bucket</string>
+    <string name="input_bucket_name">Enter the name of the bucket</string>
+    <string name="input_bucket_description">Enter the description of this bucket</string>
+    <string name="create">create</string>
+    <string name="bucket_name_null">bucket_name_null</string>
+
 </resources>

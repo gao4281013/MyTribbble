@@ -1,9 +1,10 @@
 package com.example.administrator.mydribbble.biz.http
 
 import com.example.administrator.mydribbble.entity.Shot
+import com.example.administrator.mydribbble.entity.Token
+import com.example.administrator.mydribbble.tools.Constant
 import org.jetbrains.annotations.NotNull
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 import rx.Observable
 
 /**
@@ -28,5 +29,13 @@ interface NetService {
                                @Query("page") page:Int):Observable<MutableList<Shot>>
 
 
+    /**
+     *用户登录获取token
+     * @param oauthCode  跳转到浏览器用户登录后返回的code
+     * */
+    @FormUrlEncoded
+    @POST("/oauth/token") fun getToken(@Field("client_id") clientid:String = Constant.CLIENT_ID,
+                                       @Field("client_secret") clientSecret:String = Constant.CLIENT_SECRET,
+                                       @Field("code") oauthCode:String):Observable<Token>
 
 }

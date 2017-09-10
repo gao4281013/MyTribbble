@@ -1,7 +1,8 @@
-package com.example.administrator.mydribbble
+package com.example.administrator.mydribbble.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.administrator.mydribbble.R
 
 class MainActivity : AppCompatActivity() {
 
