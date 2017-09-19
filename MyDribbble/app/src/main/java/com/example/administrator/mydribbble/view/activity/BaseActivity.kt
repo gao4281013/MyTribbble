@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import com.example.administrator.mydribbble.view.dialog.DialogManager
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 class BaseActivity : AppCompatActivity() {
     var screenWidth:Int = 0
@@ -27,6 +28,10 @@ class BaseActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }
