@@ -1,14 +1,22 @@
 package com.example.administrator.mydribbble.view.fragment
 
+import android.app.Fragment
+import android.app.FragmentManager
 import android.content.Context
-import android.net.Uri
+import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v13.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.example.administrator.mydribbble.R
+import com.example.administrator.mydribbble.event.OpenDrawerEvent
+import com.example.administrator.mydribbble.tools.startSpeak
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.search_layout.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * A simple [Fragment] subclass.
@@ -18,85 +26,144 @@ import com.example.administrator.mydribbble.R
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
+    val TITLE_RECENT = "RECENT"
+    val TITLE_POPULAR = "POPULAR"
+    val TITLE_FOLLOWING = "FOLLOWING"
 
-    // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
+    private val mRecentFragment : ShotsFragment by lazy {
+        ShotsFragment.newInstance(ShotsFragment.RECENT)
+    }
 
-    private var mListener: OnFragmentInteractionListener? = null
+    private val mPopularFragment:ShotsFragment by lazy {
+        ShotsFragment.newInstance()
+    }
+
+    private val mFollingFragment:FollowingFragment by lazy {
+        FollowingFragment()
+    }
+
+    private lateinit var mFragments:MutableList<Fragment>
+    private val mTitles:MutableList<String> by lazy {
+        mutableListOf(TITLE_POPULAR,TITLE_RECENT)
+    }
+
+    private var mPagerAdapter : PagerAdapter? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        init()
+        return LayoutInflater.from(activity).inflate(R.layout.fragment_home,null)
+    }
+
+    private fun init() {
+        mFragments = arrayListOf(mPopularFragment,mRecentFragment)
+    }
+
+    override fun onBackPresses() {
+        hideSearcgView()
+    }
+
+    private fun hideSearcgView() {
+        mSearchLayout.hideSearchView {
+            isShowSearchBar = false
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_home, container, false)
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        initView()
+        loadPager()
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        if (mListener != null) {
-            mListener!!.onFragmentInteraction(uri)
-        }
+    private fun loadPager() {
+        mPagerAdapter = PageAdapter(childFragmentManager)
+        mViewPager.adapter = mPagerAdapter
+        mTabLayout.setViewPager(mViewPager)
+    }
+
+    private fun initView() {
+
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            mListener = context
-        } else {
-            throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        bindEvent()
+    }
+
+    private fun bindEvent() {
+        tool_bar.setNavigationOnClickListener {
+             EventBus.getDefault().post(OpenDrawerEvent())
+        }
+
+        tool_bar.setOnMenuItemClickListener { menu ->
+            when(menu.itemId){
+                R.id.mSearch -> mSearchLayout.showSearchView(tool_bar.width,{
+                    isShowSearchBar = true
+                })
+            }
+            true
+        }
+
+        mBackBtn.setOnClickListener {
+            hideSearcgView()
+        }
+
+        mSearchBtn.setOnClickListener {
+            search()
+        }
+
+        mVoiceBtn.setOnClickListener { startSpeak()
+        }
+
+        mSearchEdit.setOnKeyListener { _, keyCode, event ->
+
+            if (event.action == KeyEvent.ACTION_DOWN) {//判断是否为点按下去触发的事件，如果不写，会导致该案件的事件被执行两次
+                when (keyCode) {
+                    KeyEvent.KEYCODE_ENTER -> search()
+                }
+            }
+           false
+        }
+
+    }
+
+
+
+    private fun search() {
+
+    }
+
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?) {
+        super.onKeyDown(keyCode, event)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+
+    //
+    inner class PageAdapter(fm: FragmentManager?): FragmentStatePagerAdapter(fm){
+        override fun getItem(position: Int): Fragment = mFragments[position]
+
+        override fun getCount(): Int = mFragments.size
+
+        override fun getPageTitle(position: Int): CharSequence {
+            return mTitles[position]
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): HomeFragment {
-            val fragment = HomeFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-}// Required empty public constructor
+}

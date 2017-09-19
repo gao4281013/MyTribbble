@@ -1,15 +1,15 @@
 package com.example.administrator.mydribbble.view.fragment
 
 import android.app.Activity
+import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import com.example.administrator.mydribbble.tools.Constant
 import com.example.administrator.mydribbble.view.activity.DetailsActivity
 
-class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
     var isShowSearchBar:Boolean = false
 
 

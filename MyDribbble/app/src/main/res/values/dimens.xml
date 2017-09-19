@@ -4,4 +4,8 @@
     <dimen name="test_24sp">24sp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="dp22">22dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="list_height_small">48dp</dimen>
+    <dimen name="text14">14sp</dimen>
+
 </resources>
