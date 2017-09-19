@@ -2,6 +2,7 @@ package com.example.administrator.mydribbble.application
 
 import android.app.Application
 import android.os.Environment
+import android.util.DisplayMetrics
 import com.example.administrator.mydribbble.view.MainActivity
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.tools.Constant
@@ -14,7 +15,7 @@ import com.tencent.bugly.beta.Beta
 /**
  * Created by Administrator on 2017/9/5 0005.
  */
-class App:Application() {
+class App(val displayMetrics: DisplayMetrics) :Application() {
     //将application单例化，可供全局调用context
     companion object {
         var instance:App by NotNullSingleValueVar.DelegatesExt.notNullSingleValue()

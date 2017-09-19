@@ -20,18 +20,14 @@ class BaseFragment : Fragment() {
 
     open fun onBackPresses() {}
 
-    open fun onKeyDown(keyCode:Int,event:KeyEvent?){
-
+    open fun onKeyDown(keyCode:Int,event:KeyEvent?) {
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == Constant.VOICE_CODE && resultCode == Activity.RESULT_OK){
-            val keywords = data?.getSerializableExtra(RecognizerIntent.EXTRA_RESULTS)
-            keywords?.forEach{
-               mSearchEdit.setText(it)
+        if (requestCode == Constant.VOICE_CODE && resultCode ==Activity.RESULT_OK){
+            val  keywords = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            keywords?.forEach {
+
             }
-
-
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -42,4 +38,3 @@ class BaseFragment : Fragment() {
     }
 
 }
-
