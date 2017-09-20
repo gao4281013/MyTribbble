@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.AccelerateInterpolator
 import com.example.administrator.mydribbble.tools.Utils
-import org.w3c.dom.Attr
 
 /**
  * Created by Administrator on 2017/9/12.
