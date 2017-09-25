@@ -2,16 +2,16 @@ package com.example.administrator.mydribbble.view.fragment
 
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
-import android.support.v4.app.Fragment
 import android.view.KeyEvent
 import com.example.administrator.mydribbble.tools.Constant
 import com.example.administrator.mydribbble.view.activity.DetailsActivity
 import kotlinx.android.synthetic.main.search_layout.*
 
-class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
     var isShowSearchBar:Boolean = false
 
 
@@ -20,12 +20,10 @@ class BaseFragment : Fragment() {
 
     }
 
-    open fun onBackPresses(){}
+    open fun onBackPresses() {}
 
-    open fun onKeyDown(keyCode:Int,event: KeyEvent?){
-
+    open fun onKeyDown(keyCode:Int,event:KeyEvent?) {
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == Constant.VOICE_CODE && resultCode ==Activity.RESULT_OK){
             val  keywords = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
@@ -37,9 +35,8 @@ class BaseFragment : Fragment() {
     }
 
     fun startDetailsActivity(){
-        startActivity(Intent(activity,DetailsActivity::class.java),
-        ActivityOptions.makeSceneTransitionAnimation(activity).toBundle())
-    }
+        startActivity(Intent(activity, DetailsActivity::class.java))
 
+    }
 
 }

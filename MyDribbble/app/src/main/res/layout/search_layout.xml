@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.administrator.mydribbble.view.costumview.SearchBar
     xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,6 +16,20 @@
     >
 
 
+=======
+    xmlns:app= "http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mSearchLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp8"
+    android:layout_marginRight="@dimen/dp8"
+    android:layout_marginTop="@dimen/dp8"
+    android:transitionName="searchBar"
+    android:visibility="visible"
+    app:layout_scrollFlags="scroll|enterAlways"
+    android:orientation="vertical">
+
+>>>>>>> d97e3da4430f1dfb7324644684ccf3d84828a904
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_height_small"
@@ -23,6 +38,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+<<<<<<< HEAD
             android:id="@+id/mback_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,12 +53,29 @@
             android:id="@+id/mSearch_edit"
             android:layout_weight="1"
             android:layout_width="0dp"
+=======
+            android:id="@+id/mBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding="@dimen/dp8"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+
+        <EditText
+            android:id="@+id/mSearchEdit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+>>>>>>> d97e3da4430f1dfb7324644684ccf3d84828a904
             android:background="@null"
             android:hint="@string/input_keyword"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/caption"
+<<<<<<< HEAD
             android:textSize="@dimen/sp14"
             android:layout_height="match_parent" />
 
@@ -73,4 +106,34 @@
             android:visibility="gone"
             />
     </LinearLayout>
+=======
+            android:textSize="@dimen/text14" />
+
+        <ImageButton
+            android:id="@+id/mSearchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dp8"
+            android:src="@drawable/ic_search_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/mVoiceBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dp8"
+            android:src="@drawable/ic_keyboard_voice_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/mSortBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dp8"
+            android:src="@drawable/ic_filter_list_black_24dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+>>>>>>> d97e3da4430f1dfb7324644684ccf3d84828a904
 </com.example.administrator.mydribbble.view.costumview.SearchBar>

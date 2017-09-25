@@ -30,4 +30,8 @@ class BaseActivity : AppCompatActivity() {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
 }
