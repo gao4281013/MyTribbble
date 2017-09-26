@@ -54,5 +54,7 @@ class MainActivity : BaseActivity(),IMainView,NavigationView.OnNavigationItemSel
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        return false
     }
 }
