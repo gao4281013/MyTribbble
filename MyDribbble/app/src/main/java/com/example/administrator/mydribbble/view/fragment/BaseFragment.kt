@@ -1,7 +1,6 @@
 package com.example.administrator.mydribbble.view.fragment
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle

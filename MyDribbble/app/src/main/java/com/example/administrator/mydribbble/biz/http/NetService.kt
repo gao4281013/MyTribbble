@@ -2,6 +2,7 @@ package com.example.administrator.mydribbble.biz.http
 
 import com.example.administrator.mydribbble.entity.Shot
 import com.example.administrator.mydribbble.entity.Token
+import com.example.administrator.mydribbble.entity.User
 import com.example.administrator.mydribbble.tools.Constant
 import org.jetbrains.annotations.NotNull
 import retrofit2.http.*
@@ -37,5 +38,13 @@ interface NetService {
     @POST("/oauth/token") fun getToken(@Field("client_id") clientid:String = Constant.CLIENT_ID,
                                        @Field("client_secret") clientSecret:String = Constant.CLIENT_SECRET,
                                        @Field("code") oauthCode:String):Observable<Token>
+
+    /**
+     * 获取登录的用户的个人信息
+     * @param access_token 登录后获得的用户的token
+     * */
+    @FormUrlEncoded
+    @POST("/oauth/token") fun getMyInfo(@NotNull @Query("access_token") access_token: String):Observable<User>
+
 
 }

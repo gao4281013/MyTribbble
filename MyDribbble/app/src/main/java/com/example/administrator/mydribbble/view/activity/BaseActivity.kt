@@ -7,7 +7,7 @@ import android.util.DisplayMetrics
 import com.example.administrator.mydribbble.view.dialog.DialogManager
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
     var screenWidth:Int = 0
     var screenHeight:Int = 0
     val mDialogManager:DialogManager by lazy {

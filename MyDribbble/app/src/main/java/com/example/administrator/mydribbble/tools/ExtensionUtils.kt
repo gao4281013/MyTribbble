@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.speech.RecognizerIntent
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.administrator.mydribbble.R
@@ -36,4 +37,8 @@ fun Fragment.startSpeak(){
     intent.putExtra(RecognizerIntent.EXTRA_PROMPT,resources.getString(R.string.start_speak))
     //开始执行我们的intent,语音识别
     startActivityForResult(intent,Constant.VOICE_CODE)
+}
+
+fun Any.log(msg: String){
+    Log.d(this.javaClass.simpleName,msg)
 }

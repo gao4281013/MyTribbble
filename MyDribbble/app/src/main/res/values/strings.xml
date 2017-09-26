@@ -14,5 +14,6 @@
     <string name="search">search</string>
     <string name="input_keyword">input keyword</string>
     <string name="start_speak">Please say the keywords</string>
+    <string name="net_disable">网络异常</string>
 
 </resources>
