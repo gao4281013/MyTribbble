@@ -23,19 +23,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/mback_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:padding="@dimen/dp8"
-            android:background="?android:attr/selectableItemBackground"
-            app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-
-        <EditText
-            android:id="@+id/mSearch_edit"
-            android:layout_weight="1"
+            android:id="@+id/mBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
@@ -47,6 +35,7 @@
         <EditText
             android:id="@+id/mSearchEdit"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null"
             android:hint="@string/input_keyword"
@@ -54,36 +43,7 @@
             android:inputType="text"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/caption"
-            android:textSize="@dimen/sp14"
-            android:layout_height="match_parent" />
-
-        <ImageButton
-            android:id="@+id/mSearch_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp8"
-            android:background="?android:attr/selectableItemBackground"
-            app:srcCompat="@drawable/ic_search_black_24dp"
-            />
-
-        <ImageButton
-            android:id="@+id/mvoice_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp8"
-            android:background="?android:attr/selectableItemBackground"
-            app:srcCompat="@drawable/ic_keyboard_voice_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/mSort_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp8"
-            android:background="?android:attr/selectableItemBackground"
-            app:srcCompat="@drawable/ic_filter_list_black_24dp"
-            android:visibility="gone"
-            />
-    </LinearLayout>
+            android:textSize="@dimen/text14" />
 
         <ImageButton
             android:id="@+id/mSearchBtn"
@@ -109,5 +69,6 @@
             android:padding="@dimen/dp8"
             android:src="@drawable/ic_filter_list_black_24dp"
             android:visibility="gone" />
+    </LinearLayout>
 
 </com.example.administrator.mydribbble.view.costumview.SearchBar>

@@ -18,7 +18,7 @@ import com.example.administrator.mydribbble.R
  * Use the [BunketsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BunketsFragment : Fragment() {
+class BunketsFragment : BaseFragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null

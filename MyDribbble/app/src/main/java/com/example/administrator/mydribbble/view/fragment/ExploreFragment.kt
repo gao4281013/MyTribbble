@@ -18,7 +18,7 @@ import com.example.administrator.mydribbble.R
  * Use the [ExploreFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ExploreFragment : Fragment() {
+class ExploreFragment : BaseFragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

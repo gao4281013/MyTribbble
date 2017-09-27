@@ -27,7 +27,7 @@ abstract class BaseFragment : Fragment() {
         if (requestCode == Constant.VOICE_CODE && resultCode ==Activity.RESULT_OK){
             val  keywords = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
             keywords?.forEach {
-               mSearch_edit.setText(it)
+                mSearchEdit.setText(it)
             }
         }
         super.onActivityResult(requestCode, resultCode, data)

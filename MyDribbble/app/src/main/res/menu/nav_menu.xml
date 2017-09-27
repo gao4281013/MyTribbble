@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/home"
+            android:id="@+id/mHomeMenu"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            />
+
+        <item
+            android:title="@string/explore"
+            android:id="@+id/mExploreMenu"
+            android:icon="@drawable/ic_explore_black_24dp"
+            />
+
+        <item
+            android:title="@string/my_buckets"
+            android:id="@+id/mBucketMenu"
+            android:icon="@drawable/ic_bucket_24dp"
+            />
+
+        <item
+            android:title="@string/likes"
+            android:id="@+id/mLikesMenu"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            />
+
+        <item
+            android:title="@string/settings"
+            android:id="@+id/mSettingMenu"
+            android:icon="@drawable/ic_settings_black_24dp"
+            />
+
+
+    </group>
+
+</menu>

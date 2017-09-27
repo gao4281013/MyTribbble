@@ -18,7 +18,7 @@ import com.example.administrator.mydribbble.R
  * Use the [LikeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LikeFragment : Fragment() {
+class LikeFragment : BaseFragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null

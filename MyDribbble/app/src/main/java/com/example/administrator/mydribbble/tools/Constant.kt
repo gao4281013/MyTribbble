@@ -14,3 +14,11 @@ class Constant {
         val RX_RETRY_TIME: Long = 1
     }
 }
+
+
+    object singleData {
+        var token: String? = null
+        var username: String? = null
+        var avatar: String? = null
+        fun isLogin(): Boolean = !token.isNullOrBlank()
+    }

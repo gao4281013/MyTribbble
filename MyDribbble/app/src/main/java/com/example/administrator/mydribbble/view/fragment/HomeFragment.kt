@@ -69,7 +69,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun hideSearcgView() {
-        mSearchLayout.hideSearchView {
+        mSearch_layout.hideSearchView {
             isShowSearchBar = false
         }
     }
@@ -107,7 +107,7 @@ class HomeFragment : BaseFragment() {
 
         tool_bar.setOnMenuItemClickListener { menu ->
             when(menu.itemId){
-                R.id.mSearch -> mSearchLayout.showSearchView(tool_bar.width,{
+                R.id.mSearch -> mSearch_layout.showSearchView(tool_bar.width,{
                     isShowSearchBar = true
                 })
             }
