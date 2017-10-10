@@ -24,7 +24,7 @@ class RetrofitFactory private constructor() {
 
     init {
         if (mRetrofit == null) {
-
+            createRetrofit(App.instance)
         }
     }
 

@@ -7,13 +7,14 @@ import android.content.Intent
 import android.speech.RecognizerIntent
 import android.support.design.widget.Snackbar
 import android.util.Log
-import android.view.KeyCharacterMap
-import android.view.KeyEvent
-import android.view.View
-import android.view.ViewConfiguration
+import android.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.application.App
+import org.jetbrains.anko.find
+import org.jetbrains.annotations.NotNull
 
 /**
  * Created by Administrator on 2017/9/9.
@@ -59,4 +60,45 @@ inline fun Context.hasNavigationBar(block:() -> Unit){
     if (!hasMenuKey && !hasBackKey){
         block()
     }
+}
+
+/**
+ * 显示错误图片
+ * */
+fun Fragment.showErrorImg(@NotNull viewGroup: ViewGroup,@NotNull msgResId:Int = R.string.no_shot,imgResID: Int = R.mipmap.img_empty_shots){
+    viewGroup.visibility = View.VISIBLE
+    viewGroup.find<ImageView>(R.id.mErrorImg).setImageResource(imgResID)
+    viewGroup.find<TextView>(R.id.mErrorText).setText(msgResId)
+}
+
+/**
+ * 显示错误图片
+ * */
+fun Fragment.showErrorImg(@NotNull viewGroup: ViewGroup,@NotNull msgResId:String,imgResID: Int = R.mipmap.img_empty_shots){
+    viewGroup.visibility = View.VISIBLE
+    viewGroup.find<ImageView>(R.id.mErrorImg).setImageResource(imgResID)
+    viewGroup.find<TextView>(R.id.mErrorText).setText(msgResId)
+}
+
+/**
+ * 显示错误图片
+ * */
+fun Activity.showErrorImg(@NotNull viewGroup: ViewGroup,@NotNull msgResId:String,imgResID: Int = R.mipmap.img_empty_shots){
+    viewGroup.visibility = View.VISIBLE
+    viewGroup.find<ImageView>(R.id.mErrorImg).setImageResource(imgResID)
+    viewGroup.find<TextView>(R.id.mErrorText).setText(msgResId)
+}
+
+/**
+ * 隐藏错误图片
+ * */
+fun Fragment.hideErrorImg(@NotNull viewGroup: ViewGroup){
+    viewGroup.visibility = View.GONE
+}
+
+/**
+ * 隐藏错误图片
+ * */
+fun Activity.hideErrorImg(@NotNull viewGroup: ViewGroup){
+    viewGroup.visibility = View.GONE
 }

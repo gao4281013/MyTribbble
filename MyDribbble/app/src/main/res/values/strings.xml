@@ -34,4 +34,6 @@
     <string name="this_is_Author">this is Author</string>
     <string name="git_name">GIF</string>
     <string name="failed_to_load">Failed to load,Click to try again</string>
+    <string name="click_retry">click to try again</string>
+    <string name="no_shot">no shot here</string>
 </resources>

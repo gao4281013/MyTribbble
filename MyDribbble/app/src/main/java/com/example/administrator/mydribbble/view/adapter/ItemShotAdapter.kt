@@ -83,7 +83,7 @@ class ItemShotAdapter(var mShots:MutableList<Shot>,val  itemClick:(Int) -> Unit,
 
     fun getSize():Int = mShots.size
 
-    fun addItem(shots:MutableList<Shot>){
+    fun addItems(shots:MutableList<Shot>){
         val position = mShots.size
         mShots.addAll(shots)
         notifyItemInserted(position)
