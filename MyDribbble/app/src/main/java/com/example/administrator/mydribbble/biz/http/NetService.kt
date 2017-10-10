@@ -27,7 +27,7 @@ interface NetService {
                                @Query("list") list:String?,
                                @Query("timeframe") timeframe:String?,
                                @Query("sort") sort:String?,
-                               @Query("page") page:Int):Observable<MutableList<Shot>>
+                               @Query("page") page:Int?):Observable<MutableList<Shot>>
 
 
     /**

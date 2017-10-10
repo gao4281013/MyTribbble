@@ -15,6 +15,7 @@ class NotNullSingleValueVar<T> : ReadWriteProperty<Any?, T> {
         return value ?: throw IllegalStateException("this object not initialized") as Throwable
     }
 
+    //Setter函数 如果仍然是null，则赋值，否则会抛异常。
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         this.value = if (this.value == null) value
         else throw IllegalStateException("object already initialized")

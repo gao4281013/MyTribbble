@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import com.example.administrator.mydribbble.view.dialog.DialogManager
+import com.facebook.drawee.backends.pipeline.Fresco
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 open class BaseActivity : AppCompatActivity() {
@@ -16,6 +17,8 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Fresco.initialize(this)
+
     }
 
     private fun getScreenPixel(){

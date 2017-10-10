@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
     <color name="colorAccent">#FF4081</color>
     <color name="caption">#54000000</color>
     <color name="icon">#6B6B76</color>
     <color name="bg">#EFEFF4</color>
     <color name="light">#FFFFFF</color>
     <color name="primary_text">#212121</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="black100">#000000</color>
+    <color name="google_blue">#4286f5</color>
+    <color name="gif_bg">#57979797</color>
 
 </resources>

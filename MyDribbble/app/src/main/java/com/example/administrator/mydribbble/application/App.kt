@@ -2,11 +2,10 @@ package com.example.administrator.mydribbble.application
 
 import android.app.Application
 import android.os.Environment
-import android.util.DisplayMetrics
-import com.example.administrator.mydribbble.view.MainActivity
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.tools.Constant
 import com.example.administrator.mydribbble.tools.delegates.NotNullSingleValueVar
+import com.example.administrator.mydribbble.view.MainActivity
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.liulishuo.filedownloader.FileDownloader
 import com.tencent.bugly.Bugly
@@ -15,7 +14,7 @@ import com.tencent.bugly.beta.Beta
 /**
  * Created by Administrator on 2017/9/5 0005.
  */
-class App(val displayMetrics: DisplayMetrics) :Application() {
+class App :Application() {
     //将application单例化，可供全局调用context
     companion object {
         var instance:App by NotNullSingleValueVar.DelegatesExt.notNullSingleValue()
@@ -32,6 +31,7 @@ class App(val displayMetrics: DisplayMetrics) :Application() {
         Thread{
             Fresco.initialize(this)
         }.start()
+        initBugly()
     }
 
     fun initBugly(){

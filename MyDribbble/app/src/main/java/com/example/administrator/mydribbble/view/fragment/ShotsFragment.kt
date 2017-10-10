@@ -1,16 +1,13 @@
 package com.example.administrator.mydribbble.view.fragment
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-
-import com.example.administrator.mydribbble.R
+import com.example.administrator.mydribbble.entity.Shot
+import com.example.administrator.mydribbble.presenter.ShotPresenter
+import com.example.administrator.mydribbble.view.api.IShotView
+import kotlin.reflect.KProperty
 
 /**
  * A simple [Fragment] subclass.
@@ -20,7 +17,19 @@ import com.example.administrator.mydribbble.R
  * Use the [ShotsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ShotsFragment : BaseFragment() {
+class ShotsFragment : BaseFragment(),IShotView {
+    private val mPresenter:ShotPresenter by lazy {
+        ShotPresenter(this)
+    }
+
+    private var mSort:String?= null
+    private var mSortList:String? = null
+    private var mTimeFrame:String? = null
+    private var mPage:Int = 1
+    private var mShots:MutableList<Shot> by lazy {
+        mutableListOf<Shot>()
+    }
+    private var isLoading:Boolean = false;
 
 
     companion object {
@@ -35,6 +44,12 @@ class ShotsFragment : BaseFragment() {
         }
     }
 
+    override fun getShotSuccess(shots: MutableList<Shot>?, isLoadMore: Boolean) {
+
+    }
+
+    override fun getShotFailed(msg: String, isLoadMore: Boolean) {
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,3 +67,5 @@ class ShotsFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 }
+
+private operator fun Any.setValue(shotsFragment: ShotsFragment, property: KProperty<*>, mutableList: MutableList<Shot>) {}

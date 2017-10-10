@@ -23,5 +23,15 @@
     <string name="settings">settings</string>
     <string name="logout_hint_title">You are logging out</string>
     <string name="logout_hint">Are you sure you want to log out? This will make you lose some functionality</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="login_success">login_success</string>
+    <string name="login_failed">登录失败</string>
+    <string name="title_activity_navi">NaviActivity</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="this_is_title">title_name</string>
+    <string name="this_is_Author">this is Author</string>
+    <string name="git_name">GIF</string>
+    <string name="failed_to_load">Failed to load,Click to try again</string>
 </resources>

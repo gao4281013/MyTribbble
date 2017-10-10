@@ -22,6 +22,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.example.administrator.mydribbble.application.App
 import com.google.gson.internal.bind.util.ISO8601Utils
+import org.jetbrains.anko.displayMetrics
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.math.BigDecimal

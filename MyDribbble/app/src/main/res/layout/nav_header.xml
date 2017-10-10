@@ -4,8 +4,8 @@
     android:elevation="@dimen/dp8"
     android:gravity="bottom"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    >
     <ImageView
         android:id="@+id/mHeadImg"
         android:layout_width="match_parent"
@@ -28,8 +28,8 @@
             android:id="@+id/mUserAvatar"
             android:layout_width="@dimen/dp56"
             android:layout_height="@dimen/dp56"
-            app:placeholderImage = "@mipmap/ic_user_placeholder"
-            app:roundAsCircle = "true"
+            app:placeholderImage="@mipmap/ic_user_placeholder"
+            app:roundAsCircle="true"
             />
 
         <TextView
