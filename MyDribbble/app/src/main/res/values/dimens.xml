@@ -23,5 +23,7 @@
     <dimen name="dp4">4dp</dimen>
     <dimen name="sp11">11sp</dimen>
     <dimen name="text16">16sp</dimen>
+    <dimen name="dp350">350dp</dimen>
+    <dimen name="dp150">150dp</dimen>
 
 </resources>
