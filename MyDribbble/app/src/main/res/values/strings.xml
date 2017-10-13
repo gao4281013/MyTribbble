@@ -36,4 +36,5 @@
     <string name="failed_to_load">Failed to load,Click to try again</string>
     <string name="click_retry">click to try again</string>
     <string name="no_shot">no shot here</string>
+  <string name="add_comment_hint">Add your comment</string>
 </resources>
