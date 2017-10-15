@@ -1,5 +1,6 @@
 package com.example.administrator.mydribbble.biz.http
 
+import com.example.administrator.mydribbble.entity.Comment
 import com.example.administrator.mydribbble.entity.Shot
 import com.example.administrator.mydribbble.entity.Token
 import com.example.administrator.mydribbble.entity.User
@@ -46,5 +47,17 @@ interface NetService {
     @FormUrlEncoded
     @POST("/oauth/token") fun getMyInfo(@NotNull @Query("access_token") access_token: String):Observable<User>
 
+
+    /**
+     * 创建一条评论
+     *
+     * @param access_token
+     * @param body 评论内容
+     * @param id shot的ID
+     * */
+    @FormUrlEncoded
+    @POST("shots/{id}/comments") fun  createComment(@NotNull @Path("id")id:Long,
+        @NotNull @Field("access_token") access_token: String,
+        @NotNull @Field("body") body:String):Observable<Comment>
 
 }

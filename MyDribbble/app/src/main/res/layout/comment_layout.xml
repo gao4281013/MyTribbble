@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_margin="@dimen/dp8"
+    android:background="@drawable/comment_bg"
+    android:elevation="@dimen/dp8"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    tools:showIn="@layout/activity_details"
+    >
 
-</LinearLayout>
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:id="@+id/mCommentAvatarImg"
+      android:layout_width="@dimen/content_avatar_size"
+      android:layout_height="@dimen/content_avatar_size"
+      android:layout_alignParentLeft="true"
+      android:layout_centerVertical="true"
+      android:layout_margin="@dimen/dp8"
+      app:placeholderImage="@mipmap/ic_user_placeholder"
+      app:roundAsCircle="true"
+      />
+
+  <FrameLayout
+      android:id="@+id/mSendLayout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      >
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/dp8"
+        android:scaleX="0"
+        android:scaleY="0"
+        />
+    <ImageButton
+        android:id="@+id/mSendBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/dp8"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="false"
+        android:padding="@dimen/dp8"
+        android:src="@drawable/ic_send_black_24dp"
+        />
+  </FrameLayout>
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/list_height_small"
+      android:id="@+id/mCommentEdit"
+      android:layout_centerVertical="true"
+      android:layout_toLeftOf="@id/mSendLayout"
+      android:layout_toRightOf="@id/mCommentAvatarImg"
+      android:background="@null"
+      android:focusable="false"
+      android:gravity="center_vertical"
+      android:hint="@string/add_comment_hint"
+      android:inputType="textMultiLine"
+      android:textSize="@dimen/text14"
+      />
+</RelativeLayout>
