@@ -1,9 +1,6 @@
 package com.example.administrator.mydribbble.biz.http
 
-import com.example.administrator.mydribbble.entity.Comment
-import com.example.administrator.mydribbble.entity.Shot
-import com.example.administrator.mydribbble.entity.Token
-import com.example.administrator.mydribbble.entity.User
+import com.example.administrator.mydribbble.entity.*
 import com.example.administrator.mydribbble.tools.Constant
 import org.jetbrains.annotations.NotNull
 import retrofit2.http.*
@@ -59,5 +56,42 @@ interface NetService {
     @POST("shots/{id}/comments") fun  createComment(@NotNull @Path("id")id:Long,
         @NotNull @Field("access_token") access_token: String,
         @NotNull @Field("body") body:String):Observable<Comment>
+
+    /**
+     * 获取一个shot下的评论列表
+     *
+     * @param id 这条shot的ID
+     * @param access_token token 默认值为公用token
+     * @param page 获取哪一页 默认为空，评论列表应为dribbble评论偏少的缘故，不做上拉加载
+     *
+     * return MutableList<Comment>
+     * */
+    @GET("shots/{id}/comments") fun getComments(@NotNull @Path("id") id: Long,
+                                                @NotNull @Query("access_token") access_token: String,
+                                                @Query("page") page: Int?,
+                                                @Query("per_page") per_page:Int?=100):Observable<MutableList<Comment>>
+    /**
+     * 喜欢一个shot
+     * @param access_token
+     * @param id shot的id
+     * */
+    @FormUrlEncoded
+    @POST("shots/{id}/like") fun likeShot(@NotNull @Path("id") id: Long,
+                                          @NotNull @Field("access_token") access_token: String):Observable<LikeShotResponse>
+
+    /**
+     * 获取这个shot是否被喜欢
+     * @param access_token
+     * @param id shot的id
+     * */
+    @GET("shots/{id}/like") fun checkIfLikeShot(@NotNull @Path("id") id: Long,
+                                                @NotNull @Query("access_token") access_token: String):Observable<LikeShotResponse>
+
+    /**
+     * 删除这个like
+     * */
+    @DELETE("shot/{id}/like") fun unLikeShot(@NotNull @Path("id") id: Long,
+                                             @NotNull @Query("access_token") access_token: String):Observable<LikeShotResponse>
+
 
 }

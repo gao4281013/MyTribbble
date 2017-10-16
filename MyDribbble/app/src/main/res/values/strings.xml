@@ -37,4 +37,7 @@
     <string name="click_retry">click to try again</string>
     <string name="no_shot">no shot here</string>
   <string name="add_comment_hint">Add your comment</string>
+    <string name="like_failed">like failed</string>
+    <string name="unlike_failed">unlike failed</string>
+    <string name="account_not_player">Your account may not be player T^T</string>
 </resources>

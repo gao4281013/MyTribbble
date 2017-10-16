@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.entity.Comment
 import com.example.administrator.mydribbble.entity.Shot
+import com.example.administrator.mydribbble.presenter.DetailsPresenter
 import com.example.administrator.mydribbble.tools.singleData
 import com.example.administrator.mydribbble.view.adapter.CommentAdapter
 import com.example.administrator.mydribbble.view.api.IDetailView
@@ -13,8 +14,8 @@ import kotlinx.android.synthetic.main.comment_layout.*
 import org.greenrobot.eventbus.EventBus
 
 class DetailsActivity : BaseActivity(),IDetailView {
-   private val mPresenter:DetailPresenter by lazy {
-
+   private val mPresenter: DetailsPresenter by lazy {
+       DetailsPresenter(this)
    }
 
     private var mId:Long =0
