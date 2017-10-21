@@ -13,7 +13,6 @@ import com.example.administrator.mydribbble.entity.Shot
 import com.example.administrator.mydribbble.tools.ImageLoad
 import com.example.administrator.mydribbble.tools.Utils
 import com.example.administrator.mydribbble.tools.hasNavigationBar
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_card_bottom.view.*
 import kotlinx.android.synthetic.main.item_card_head.view.*
 import kotlinx.android.synthetic.main.item_shots.view.*
@@ -56,7 +55,7 @@ class ItemShotAdapter(var mShots:MutableList<Shot>,val  itemClick:(Int) -> Unit,
     }
 
     private fun addCardZAnimation(mItemCardView: CardView?){
-        mItemCardView?.setOnTouchListener { v, event ->
+        mItemCardView?.setOnTouchListener { _, event ->
             when(event.action){
                 MotionEvent.ACTION_DOWN -> mItemCardView.animate().translationZ(Utils.dp2px(24)).duration = CARD_TAP_DURATION
                 MotionEvent.ACTION_UP -> mItemCardView.animate().translationZ(Utils.dp2px(0f)).duration = CARD_TAP_DURATION
