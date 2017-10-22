@@ -53,4 +53,8 @@
       android:background="@color/icon"
       />
 
+  <include layout="@layout/count_info_layout"/>
+
+  <include layout="@layout/item_comment_load"/>
+
 </LinearLayout>

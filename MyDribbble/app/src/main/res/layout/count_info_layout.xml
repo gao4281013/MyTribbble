@@ -73,7 +73,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_remove_red_eye_black_18dp" />
+        android:src="@drawable/ic_bucket_18dp" />
 
     <TextView
         android:id="@+id/mBucketCountText"
@@ -98,7 +98,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_forum_black_24dp" />
+        android:src="@drawable/ic_forum_black_18dp" />
 
     <TextView
         android:id="@+id/mCommentCountText"

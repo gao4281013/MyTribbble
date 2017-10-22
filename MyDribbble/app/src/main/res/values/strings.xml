@@ -45,4 +45,5 @@
   <string name="open_in_browser">open_in_browser</string>
   <string name="into_the_bucket">into the bucket</string>
   <string name="not_logged">not logged</string>
+    <string name="no_comment">no comment</string>
 </resources>
