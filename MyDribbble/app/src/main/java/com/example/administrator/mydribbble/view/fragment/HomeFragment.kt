@@ -1,5 +1,6 @@
 package com.example.administrator.mydribbble.view.fragment
 
+import android.app.ActivityOptions
 import android.app.Fragment
 import android.app.FragmentManager
 import android.content.Context
@@ -14,6 +15,7 @@ import android.view.ViewGroup
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.event.OpenDrawerEvent
 import com.example.administrator.mydribbble.tools.startSpeak
+import com.example.administrator.mydribbble.view.activity.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.search_layout.*
 import org.greenrobot.eventbus.EventBus
@@ -108,11 +110,11 @@ class HomeFragment : BaseFragment() {
         tool_bar.setOnMenuItemClickListener { menu ->
             when(menu.itemId){
                 R.id.mSearch -> mSearch_layout.showSearchView(tool_bar.width,{
-                    isShowSearchBar = true
-                })
-            }
-            true
-        }
+            isShowSearchBar = true
+        })
+    }
+    true
+}
 
         mBackBtn.setOnClickListener {
             hideSearcgView()
@@ -140,7 +142,12 @@ class HomeFragment : BaseFragment() {
 
 
     private fun search() {
-
+      if (mSearchEdit.text!=null && mSearchEdit.text.toString()!=""){
+          val intent = Intent(activity,SearchActivity::class.java)
+          intent.putExtra(SearchActivity.KEY_KEYWORD,mSearchEdit.text.toString())
+          startActivity(intent,ActivityOptions.makeSceneTransitionAnimation(activity,mSearchEdit,
+              "searchBar").toBundle())
+      }
     }
 
 

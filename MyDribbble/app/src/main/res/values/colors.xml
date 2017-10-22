@@ -15,5 +15,6 @@
     <color name="google_green">#34a853</color>
     <color name="google_blue">#4286f5</color>
     <color name="gif_bg">#57979797</color>
+  <color name="primary_light">#FFCCBC</color>
 
 </resources>

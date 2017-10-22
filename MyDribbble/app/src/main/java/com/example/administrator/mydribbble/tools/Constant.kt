@@ -1,5 +1,8 @@
 package com.example.administrator.mydribbble.tools
 
+import android.os.Environment
+import java.io.File
+
 /**
  * Created by Administrator on 2017/9/5 0005.
  */
@@ -16,6 +19,8 @@ class Constant {
         val KEY_TOKEN = "key_token"
         val KEY_USER = "key_user"
         val ACCESS_TOKEN = "ee607f434ed5fe4ac833c7d22f541245f95f2c99ecdef57900e74e4d6bf7e4cd"
+      val  IMAGE_DOENLOAD_PATH = "${Environment.getExternalStorageDirectory()}${File
+          .separator}MyDribbble${File.separator}download"
 
     }
 }
