@@ -82,8 +82,8 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         val toggle = ActionBarDrawerToggle(this,mDrawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
         mDrawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        val params = mNvigation.layoutParams
-        params.width = screenWidth - screenWidth/4
+//        val params = mNvigation.layoutParams
+//        params.width = screenWidth - screenWidth/4
         singleData.token = QuickSimpleIO.getString(Constant.KEY_TOKEN)
         mUser = Gson().fromJson(QuickSimpleIO.getString(Constant.KEY_USER),User::class.java)
         singleData.avatar = mUser?.avatar_url
