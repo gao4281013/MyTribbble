@@ -1,14 +1,14 @@
 package com.example.administrator.mydribbble.view.fragment
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.example.administrator.mydribbble.R
+import com.example.administrator.mydribbble.entity.Shot
+import com.example.administrator.mydribbble.view.api.IShotView
 
 /**
  * A simple [Fragment] subclass.
@@ -18,7 +18,7 @@ import com.example.administrator.mydribbble.R
  * Use the [ExploreFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ExploreFragment : BaseFragment() {
+class ExploreFragment : BaseFragment(),IShotView {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,29 +41,9 @@ class ExploreFragment : BaseFragment() {
         super.onDetach()
     }
 
+    override fun getShotSuccess(shots: MutableList<Shot>?, isLoadMore: Boolean) {
+    }
 
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
-
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExploreFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): ExploreFragment {
-            val fragment = ExploreFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
+    override fun getShotFailed(msg: String, isLoadMore: Boolean) {
     }
 }
