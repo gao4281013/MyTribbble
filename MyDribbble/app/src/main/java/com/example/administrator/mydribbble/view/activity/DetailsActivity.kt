@@ -24,6 +24,7 @@ import com.jakewharton.rxbinding.view.RxView
 import com.jakewharton.rxbinding.widget.RxTextView
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.comment_layout.*
+import kotlinx.android.synthetic.main.item_card_bottom.*
 import kotlinx.android.synthetic.main.item_shots.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -61,7 +62,7 @@ class DetailsActivity : BaseActivity(),IDetailView {
         }
         toolbar.inflateMenu(R.menu.detail_menu)
        val layoutManager = LinearLayoutManager(this
-       ,LinearLayoutManager.VERTICAL,false);
+       ,LinearLayoutManager.VERTICAL,false)
       mRecycler.layoutManager = layoutManager
       mRecycler.itemAnimator = DefaultItemAnimator()
     }
@@ -274,7 +275,10 @@ class DetailsActivity : BaseActivity(),IDetailView {
       val urlNormal:String = shot.images?.hidpi?: shot.images?.normal!!
       ImageLoad.frescoLoadNormal(mCOntentImg,mProgress,urlNormal,
           shot.images?.teaser.toString(),true)
-     mAdapter = CommentAdapter(shot,mComments,userClick = { _,i ->
+     mAdapter = CommentAdapter(shot,mComments,likeClick ={
+       _,i ->
+       //评论中的喜欢点击事件
+     } ,userClick = { _,i ->
        EventBus.getDefault().postSticky(mComments[i].user)
        startActivity(Intent(this,UserActivity::class.java))
      },authorClick = {
@@ -292,38 +296,70 @@ class DetailsActivity : BaseActivity(),IDetailView {
   }
 
   override fun getCommentsSuccess(Comments: MutableList<Comment>) {
+        if (Comments!=null && Comments.isNotEmpty()){
+          mAdapter?.addItems(Comments)
+        }else{
+          mAdapter?.showCommentHint(R.string.no_comment)
+        }
     }
 
     override fun getcommentsFailed(msg: String) {
+      showSnackBar(mRootLayout,msg)
+      mAdapter?.showCommentHint(R.string.click_retry)
     }
 
     override fun showSendProgress() {
+      mSendBtn.animate().scaleX(0f).scaleY(0f).duration = 100
+      mSendProgress.animate().scaleX(1f).scaleY(1f).duration=200
     }
 
     override fun hideSendProgress() {
+      mSendProgress.animate().scaleX(0f).scaleY(0f).duration =100
+      mSendBtn.animate().scaleX(1f).scaleY(1f).duration = 200
     }
 
     override fun addCommentFailed(msg: String) {
+      showSnackBar(mRootLayout,msg)
     }
 
     override fun addCommentSuccess(comment: Comment?) {
+      if(comment!=null){
+        mAdapter?.addItem(mComments.size,comment)
+      }
     }
 
     override fun likeShotSuccess() {
+      showSnackBar(mRootLayout,resources.getString(R.string.like_success))
+      mLikeCountText.text = "${mLikeCountText.text.toString().toInt()+1}"
     }
 
     override fun likeShotFailed(msg: String) {
+      showSnackBar(mRootLayout,msg)
     }
 
     override fun checkIfLikeSuccess() {
+      mLiked = true
+      mFavioriteBtn.setImageResource(R.drawable.ic_favorite_black_24dp)
     }
 
     override fun checkIfLikeFailed() {
+      mFavioriteBtn.setImageResource(R.drawable.ic_favorite_border_black_24dp)
     }
 
     override fun unLikeShotSuccess() {
+      showSnackBar(mRootLayout,resources.getString(R.string.like_success))
+      mLikeCountText.text = "${mLikeCountText.text.toString().toInt()-1}"
     }
 
     override fun unLikeShotFailed(msg: String) {
+      showSnackBar(mRootLayout,msg)
     }
+
+  private fun showFab(){
+    mFavioriteBtn.visibility = View.VISIBLE
+    mFavioriteBtn.animate()
+        .scaleY(1f)
+        .scaleX(1f)
+        .setDuration(300).interpolator = OvershootInterpolator()
+  }
 }

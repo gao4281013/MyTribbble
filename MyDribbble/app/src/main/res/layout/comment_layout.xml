@@ -39,6 +39,7 @@
         android:layout_marginRight="@dimen/dp8"
         android:scaleX="0"
         android:scaleY="0"
+        android:id="@+id/mSendProgress"
         />
     <ImageButton
         android:id="@+id/mSendBtn"

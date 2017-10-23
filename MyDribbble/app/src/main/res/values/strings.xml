@@ -46,4 +46,5 @@
   <string name="into_the_bucket">into the bucket</string>
   <string name="not_logged">not logged</string>
     <string name="no_comment">no comment</string>
+  <string name="like_success">like success</string>
 </resources>

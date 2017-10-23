@@ -22,6 +22,9 @@ class Constant {
       val  IMAGE_DOENLOAD_PATH = "${Environment.getExternalStorageDirectory()}${File
           .separator}MyDribbble${File.separator}download"
 
+        val DETAILS_EVENT_LIKE_COUNT = 0
+        val DETAILS_EVENT_AYYACHMENT_COUNT =1
+        val DETAILS_EVENT_BUCKET_COUNT = 2
     }
 }
 
