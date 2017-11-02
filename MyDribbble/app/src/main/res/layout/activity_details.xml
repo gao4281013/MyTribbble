@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content">
 
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/mCOntentImg"
+                    android:id="@+id/mContentImg"
                     android:background="?android:attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

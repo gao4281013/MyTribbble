@@ -25,7 +25,6 @@ import com.jakewharton.rxbinding.widget.RxTextView
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.comment_layout.*
 import kotlinx.android.synthetic.main.item_card_bottom.*
-import kotlinx.android.synthetic.main.item_shots.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -273,7 +272,7 @@ class DetailsActivity : BaseActivity(),IDetailView {
 
   private fun mountData(shot: Shot) {
       val urlNormal:String = shot.images?.hidpi?: shot.images?.normal!!
-      ImageLoad.frescoLoadNormal(mCOntentImg,mProgress,urlNormal,
+      ImageLoad.frescoLoadNormal(mContentImg,mProgress,urlNormal,
           shot.images?.teaser.toString(),true)
      mAdapter = CommentAdapter(shot,mComments,likeClick ={
        _,i ->
