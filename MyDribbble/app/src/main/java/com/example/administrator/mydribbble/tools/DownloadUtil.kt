@@ -17,12 +17,12 @@ class DownloadUtil {
            Manifest.permission.WRITE_EXTERNAL_STORAGE)
            .subscribe({aBoolean ->
              if (aBoolean){
-               downloadImg(url,path)
+               download(url,path)
              }
            },Throwable::printStackTrace)
     }
 
-    private fun downloadImg(url: String, path: String) {
+    private fun download(url: String, path: String) {
        toast("开始下载")
       FileDownloader.getImpl().create(url)
           .setPath(path)
