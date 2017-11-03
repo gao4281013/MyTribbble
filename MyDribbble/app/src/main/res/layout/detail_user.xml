@@ -5,17 +5,18 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/dp16"
     android:id="@+id/mAuthorLayout"
+    android:clickable="true"
     android:background="?android:attr/selectableItemBackgroundBorderless"
     android:transitionName="userHead"
     >
 
   <com.facebook.drawee.view.SimpleDraweeView
-      app:roundAsCircle= "true"
       android:id="@+id/mAvaterImg"
       android:layout_centerVertical="true"
       android:layout_width="48dp"
       android:layout_height="48dp"
       app:placeholderImage="@mipmap/ic_user_placeholder"
+      app:roundAsCircle= "true"
       />
 
   <RelativeLayout

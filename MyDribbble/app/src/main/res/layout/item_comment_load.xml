@@ -32,7 +32,7 @@
             />
     </FrameLayout>
 
-    <view
+    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_height_small"
         android:visibility="gone"

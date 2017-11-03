@@ -16,7 +16,7 @@
       android:layout_marginRight="@dimen/dp16"
       android:layout_marginTop="@dimen/dp8"
       android:autoLink="all"
-      android:text="No Description"
+      android:text="@string/no_description"
       android:textIsSelectable="true"
       />
 

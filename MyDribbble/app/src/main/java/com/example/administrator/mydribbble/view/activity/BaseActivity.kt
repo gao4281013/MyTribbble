@@ -1,8 +1,8 @@
 package com.example.administrator.mydribbble.view.activity
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import com.example.administrator.mydribbble.view.dialog.DialogManager
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -18,6 +18,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Fresco.initialize(this)
+        getScreenPixel()
 
     }
 
@@ -35,6 +36,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mDialogManager.dismissAll()
     }
 
 }

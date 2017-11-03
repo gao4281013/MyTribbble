@@ -36,9 +36,8 @@
 
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/mTabLayout"
-
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/dp36"
         app:tabGravity = "fill"
         app:tabIndicatorColor = "@color/light"
         app:tabMode = "fixed"

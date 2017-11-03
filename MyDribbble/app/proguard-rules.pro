@@ -28,3 +28,6 @@
 -dontwarn com.newrelic.**
 
 -keepattributes Exceptions, Signature, InnerClasses
+
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}

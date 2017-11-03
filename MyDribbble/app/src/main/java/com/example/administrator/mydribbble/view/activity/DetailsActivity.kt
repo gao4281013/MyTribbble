@@ -266,7 +266,7 @@ class DetailsActivity : BaseActivity(),IDetailView {
   }
 
   private fun getComments() {
-      val token = singleData.token?:Constant.KEY_TOKEN
+      val token = singleData.token?:Constant.ACCESS_TOKEN
       mPresenter.getComment(mId,token,null)
   }
 
