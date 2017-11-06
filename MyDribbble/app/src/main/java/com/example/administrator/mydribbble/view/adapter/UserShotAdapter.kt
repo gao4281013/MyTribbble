@@ -1,11 +1,11 @@
 package com.example.administrator.mydribbble.view.adapter
 
-import android.support.v7.app.AlertController
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.entity.Shot
-import java.util.function.BinaryOperator
 
 /**
  * Created by Administrator on 2017/11/6.
@@ -31,7 +31,10 @@ Unit):RecyclerView.Adapter<UserShotAdapter.ViewHolder>() {
   override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder  = when (viewType) {
+    BIO -> ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.bio_layout, parent, false))
+    LOAD -> ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_comment_load, parent, false))
+    else -> ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_user_shot, parent, false))
   }
 
   class ViewHolder(itemview:View):RecyclerView.ViewHolder(itemview)

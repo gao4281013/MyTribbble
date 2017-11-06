@@ -5,6 +5,7 @@ import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.entity.Shot
 import com.example.administrator.mydribbble.entity.User
 import com.example.administrator.mydribbble.presenter.UserPresenter
+import com.example.administrator.mydribbble.view.adapter.UserShotAdapter
 import com.example.administrator.mydribbble.view.api.IUserView
 
 class UserActivity : BaseActivity(),IUserView{
@@ -27,7 +28,7 @@ class UserActivity : BaseActivity(),IUserView{
     lateinit private var mUser:User
     private var isLoading:Boolean = false
     private var mPage:Int = 1
-    lateinit private var mAdapter:UserShotAdapter
+    lateinit private var mAdapter: UserShotAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
