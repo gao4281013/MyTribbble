@@ -33,4 +33,13 @@
     <item name="android:progressBackgroundTint">@color/colorPrimary</item>
   </style>
 
+  <style name="DetailsTheme" parent="TransparentStatusTheme">
+    <item name="android:windowEnterTransition">@transition/exlpode</item>
+  </style>
+
+
+    <style name="TransparentStatusTheme" parent="AppTheme">
+      <item name="android:windowTranslucentStatus">true</item>
+      <item name="android:windowTranslucentNavigation">false</item>
+    </style>
 </resources>

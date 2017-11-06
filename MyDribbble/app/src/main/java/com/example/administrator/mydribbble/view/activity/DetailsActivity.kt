@@ -265,8 +265,21 @@ class DetailsActivity : BaseActivity(),IDetailView {
     hideBuckets()
   }
 
+  override fun onResume() {
+    super.onResume()
+  }
+
+  override fun showProgress() {
+    mAdapter?.showProgress()
+  }
+
+  override fun hideProgress() {
+    mAdapter?.hideProgress()
+  }
+
   private fun getComments() {
       val token = singleData.token?:Constant.ACCESS_TOKEN
+      showProgress()
       mPresenter.getComment(mId,token,null)
   }
 
@@ -284,7 +297,9 @@ class DetailsActivity : BaseActivity(),IDetailView {
         EventBus.getDefault().postSticky(shot.user)
        startActivity(Intent(this,UserActivity::class.java))
      },commentHintClick = {
-
+       RxView.clicks(mCommentEdit).throttleFirst(200,TimeUnit.MILLISECONDS).subscribe{
+         Utils.showKeyboard(mCommentEdit)
+       }
      },countClick = {
 
      },tagClick = {
@@ -295,6 +310,7 @@ class DetailsActivity : BaseActivity(),IDetailView {
   }
 
   override fun getCommentsSuccess(Comments: MutableList<Comment>) {
+         hideProgress()
         if (Comments!=null && Comments.isNotEmpty()){
           mAdapter?.addItems(Comments)
         }else{
@@ -303,6 +319,7 @@ class DetailsActivity : BaseActivity(),IDetailView {
     }
 
     override fun getcommentsFailed(msg: String) {
+      hideProgress()
       showSnackBar(mRootLayout,msg)
       mAdapter?.showCommentHint(R.string.click_retry)
     }

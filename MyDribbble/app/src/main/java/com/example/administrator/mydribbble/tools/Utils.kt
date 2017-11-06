@@ -213,6 +213,22 @@ object Utils {
     }
 
     /**
+     * 隐藏软键盘
+
+     * @param editText
+     */
+    fun showKeyboard(editText: EditText) {
+        val imm = editText
+            .context.getSystemService(
+            Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (imm.isActive) {
+            imm.showSoftInputFromInputMethod(
+                editText.applicationWindowToken, 0)
+        }
+    }
+
+
+    /**
      * 获取imei
 
      * @param context

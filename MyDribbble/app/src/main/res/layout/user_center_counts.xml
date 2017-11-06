@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp16"
+    android:background="@color/gray"
+    android:scrollbars="none"
+    tools:showIn="@layout/activity_user"
+    >
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mShotBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mShotText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Shots"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mBucketBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mBucketText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Bucket"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mFollowersBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mFollowerText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Follower"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mFollingsBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mFollingsText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Follings"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mLikesBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mLikesText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Likes"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mGetLikedBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mGetLikedText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Get Liked"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mProjectBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mProjectText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Projects"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mTeamsBtn"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        >
+      <TextView
+          android:id="@+id/mTeamsText"
+          android:text="0"
+          android:textColor="@color/primary_text"
+          android:textSize="@dimen/text20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp4"
+          android:text="Teams"
+          android:textColor="@color/caption"
+          />
+
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</HorizontalScrollView>

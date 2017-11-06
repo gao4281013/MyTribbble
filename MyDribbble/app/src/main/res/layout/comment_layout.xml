@@ -11,6 +11,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:gravity="center_vertical"
+    app:layout_behavior="com.example.administrator.mydribbble.view.costumview.behavior.BehaviorComment"
     tools:showIn="@layout/activity_details"
     >
 

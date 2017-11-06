@@ -92,7 +92,7 @@ class CommentAdapter(val mShot: Shot,
         val mTagBtn = LayoutInflater.from(p0.ctx).inflate(R.layout.tag_layout, holder
             .itemView.mTags, false) as TextView
         if (p1 != tags.size - 1)
-          mTagBtn.text = "$tags, " else mTagBtn.text = toString()
+          mTagBtn.text = "$p2, " else mTagBtn.text = p2
         mTagBtn.setOnClickListener {
           tagClick(p1)
         }

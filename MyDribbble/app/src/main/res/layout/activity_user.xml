@@ -4,6 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.mydribbble.view.activity.UserActivity">
+    tools:context="com.example.administrator.mydribbble.view.activity.UserActivity"
+    android:id="@+id/mRootLayout"
+    android:background="@color/bg"
+    >
+
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/mAppBar"
+      android:layout_width="match_parent"
+      android:layout_height="350dp"
+      android:elevation="0dp"
+      android:fitsSystemWindows="true"
+      android:theme="@style/AppTheme.AppBarOverlay"
+      >
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mCollapsing"
+        android:minHeight="150dp"
+        app:contentScrim="?attr/colorPrimary"
+        app:layout_scrollFlags="exitUntilCollapsed|scroll|snap"
+        app:statusBarScrim="@android:color/transparent"
+        app:titleEnabled="false"
+        >
+
+      <include layout="@layout/user_center_top"/>
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          app:layout_collapseMode="pin"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+          app:popupTheme="@style/AppTheme.PopupOverlay"
+          />
+
+    </android.support.design.widget.CollapsingToolbarLayout>
+  </android.support.design.widget.AppBarLayout>
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/mRecycleView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingLeft="@dimen/dp12"
+      android:paddingRight="@dimen/dp12"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      />
 
 </android.support.constraint.ConstraintLayout>

@@ -34,19 +34,30 @@ class UserBiz :BaseBiz(),IUserBiz{
     }
 
     override fun getUserShot(user: String, id: String?, access_token: String, page: Int?, netSubsriber: NetSubsrciber<MutableList<Shot>>): Subscription {
-
+           getNetService().getUserShot(user, id, access_token, page)
+               .compose(RxHelper.listModeThread())
+               .subscribe(netSubsriber)
        return netSubsriber
     }
 
     override fun checkIfFollowingUser(id: Long, access_token: String, netSubsriber: NetSubsrciber<NullResponse>): Subscription {
-        return netSubsriber
+           getNetService().checkIfFollowingUser(id, access_token)
+               .compose(RxHelper.singleModeThread())
+               .subscribe(netSubsriber)
+      return netSubsriber
     }
 
     override fun followUser(id: Long, access_token: String, netSubsriber: NetSubsrciber<NullResponse>): Subscription {
-        return netSubsriber
+           getNetService().followUser(id, access_token)
+               .compose(RxHelper.singleModeThread())
+               .subscribe(netSubsriber)
+      return netSubsriber
     }
 
     override fun unFollowUser(id: Long, access_token: String, netSubsriber: NetSubsrciber<NullResponse>): Subscription {
+          getNetService().unfollowUser(id, access_token)
+              .compose(RxHelper.singleModeThread())
+              .subscribe(netSubsriber)
         return netSubsriber
     }
 }

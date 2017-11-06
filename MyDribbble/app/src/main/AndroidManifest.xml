@@ -27,7 +27,9 @@
       </intent-filter>
     </activity>
     <activity android:name=".view.activity.BaseActivity"/>
-    <activity android:name=".view.activity.DetailsActivity"/>
+    <activity android:name=".view.activity.DetailsActivity"
+        android:theme="@style/DetailsTheme"
+        />
     <activity android:name=".view.activity.UserActivity"/>
     <activity android:name=".view.activity.SettingActivity"/>
     <activity android:name=".view.activity.SearchActivity">
