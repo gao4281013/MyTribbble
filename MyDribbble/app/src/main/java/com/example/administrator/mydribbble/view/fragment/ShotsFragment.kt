@@ -10,7 +10,6 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import com.example.administrator.mydribbble.R
 import com.example.administrator.mydribbble.application.App
 import com.example.administrator.mydribbble.entity.Shot

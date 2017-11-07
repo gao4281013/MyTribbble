@@ -29,5 +29,6 @@
   <dimen name="comment_input_radius">50dp</dimen>
   <dimen name="content_avatar_size">36dp</dimen>
   <dimen name="dp12">12dp</dimen>
+  <dimen name="square_img_height">100dp</dimen>
 
 </resources>
