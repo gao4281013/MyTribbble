@@ -47,6 +47,17 @@ fun Fragment.startSpeak(){
     startActivityForResult(intent,Constant.VOICE_CODE)
 }
 
+fun Activity.startSpeak() {
+    //通过Intent传递语音识别的模式
+    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+    //语言模式和自由形式的语音识别
+    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+    //提示语音开始
+    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, resources.getString(R.string.start_speak))
+    //开始执行我们的Intent、语音识别
+    startActivityForResult(intent, Constant.VOICE_CODE)
+}
+
 fun Any.log(msg: String){
     Log.d(this.javaClass.simpleName,msg)
 }

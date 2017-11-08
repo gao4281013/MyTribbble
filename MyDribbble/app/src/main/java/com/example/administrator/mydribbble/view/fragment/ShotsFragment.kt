@@ -35,176 +35,196 @@ import kotlin.reflect.KProperty
  * Use the [ShotsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ShotsFragment : BaseFragment(),IShotView {
-    private val mPresenter:ShotPresenter by lazy {
-        ShotPresenter(this)
+class ShotsFragment : BaseFragment(), IShotView {
+  private val mPresenter: ShotPresenter by lazy {
+    ShotPresenter(this)
+  }
+
+  private var mSort: String? = null
+  private var mSortList: String? = null
+  private var mTimeFrame: String? = null
+  private var mPage: Int = 1
+  private var mShots: MutableList<Shot> by lazy {
+    mutableListOf<Shot>()
+  }
+  private var isLoading: Boolean = false;
+  private var mListAdapter: ItemShotAdapter? = null
+  private var isFirstEnter = true
+
+
+  companion object {
+    val SORT = "sort"
+    val RECENT = "recent"
+    fun newInstance(sort: String? = null): ShotsFragment {
+      val fragment = ShotsFragment()
+      val args = Bundle()
+      args.putString(SORT, sort)
+      fragment.arguments = args
+      return fragment
+    }
+  }
+
+  override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+      savedInstanceState: Bundle?): View {
+    return LayoutInflater.from(activity).inflate(R.layout.fragment_shots, null)
+  }
+
+  override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    initViews();
+    getShots(false)
+  }
+
+  private fun initViews() {
+    val layoutManager = LinearLayoutManager(App.instance, LinearLayoutManager.VERTICAL, false)
+    mRecycleView.layoutManager = layoutManager
+    mRecycleView.itemAnimator = DefaultItemAnimator()
+
+    if (isFirstEnter) {
+      isFirstEnter = false
+      mRefresh.autoRefresh()//第一次进入触发自动刷新，演示效果
+    }
+  }
+
+  private fun getShots(isLoadMore: Boolean) {
+    isLoading = true
+    val token = singleData.token ?: Constant.ACCESS_TOKEN
+    mPresenter.getShots(access_token = token,
+        sort = mSort,
+        list = mSortList,
+        timeframe = mTimeFrame,
+        page = mPage,
+        isLoadMore = isLoadMore)
+  }
+
+
+  override fun onStart() {
+    super.onStart()
+    bindEvent()
+  }
+
+  private fun bindEvent() {
+    mRefresh.setOnRefreshListener {
+      mPage = 1
+      getShots(false)
     }
 
-    private var mSort:String?= null
-    private var mSortList:String? = null
-    private var mTimeFrame:String? = null
-    private var mPage:Int = 1
-    private var mShots:MutableList<Shot> by lazy {
-        mutableListOf<Shot>()
-    }
-    private var isLoading:Boolean = false;
-    private var mListAdapter:ItemShotAdapter? = null
-
-
-
-    companion object {
-        val SORT = "sort"
-        val RECENT = "recent"
-        fun newInstance(sort:String?=null):ShotsFragment{
-            val fragment = ShotsFragment()
-            val args = Bundle()
-            args.putString(SORT,sort)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return LayoutInflater.from(activity).inflate(R.layout.fragment_shots,null)
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        initViews();
-        getShots(false)
-    }
-
-    private fun initViews() {
-      mRefresh.setColorSchemeResources(R.color.google_red,R.color.google_yellow,R.color.google_green,R.color.google_blue)
-      val layoutManager = LinearLayoutManager(App.instance,LinearLayoutManager.VERTICAL,false)
-        mRecycleView.layoutManager = layoutManager
-        mRecycleView.itemAnimator = DefaultItemAnimator()
-    }
-    private fun getShots(isLoadMore: Boolean) {
-         isLoading = true
-        val token = singleData.token?:Constant.ACCESS_TOKEN
-        mPresenter.getShots(access_token = token,
-                sort = mSort,
-                list = mSortList,
-                timeframe = mTimeFrame,
-                page = mPage,
-                isLoadMore = isLoadMore)
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        bindEvent()
-    }
-
-    private fun bindEvent() {
-        mRefresh.setOnRefreshListener {
-            mPage = 1
-            getShots(false)
-        }
-
-        mErrorLayout.setOnClickListener {
-            hideErrorImg(mErrorLayout)
-            getShots(false)
-        }
-
-        mRecycleView.addOnScrollListener(object :RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                val linearMagager = recyclerView?.layoutManager as LinearLayoutManager
-                val position = linearMagager.findLastVisibleItemPosition()
-                if (mShots.isNotEmpty() && position == mShots.size){
-                    if (!isLoading){
-                        mPage +=1
-                        getShots(true)
-                    }
-                }
-
-            }
-
-        })
+    mRefresh.setOnLoadmoreListener {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mPresenter.unSubsrciber()
+    mErrorLayout.setOnClickListener {
+      hideErrorImg(mErrorLayout)
+      getShots(false)
     }
 
-    override fun showProgress() {
-        if (mListAdapter==null)mRefresh.isRefreshing = true
-    }
-
-    override fun hideProgress() {
-        mRefresh.isRefreshing = false
-    }
-
-
-
-
-    override fun getShotSuccess(shots: MutableList<Shot>?, isLoadMore: Boolean) {
-           isLoading = false
-        if (shots!=null && shots.isNotEmpty()){
-            if (!isLoadMore){
-                mountList(shots)
-            }else{
-                mListAdapter?.addItems(shots)
-            }
-        }else{
-            if (!isLoadMore){
-                showErrorImg(mErrorLayout)
-            }else{
-                mListAdapter?.loadError {
-                    getShots(true)
-                }
-            }
+    mRecycleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+      override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+        val linearMagager = recyclerView?.layoutManager as LinearLayoutManager
+        val position = linearMagager.findLastVisibleItemPosition()
+        if (mShots.isNotEmpty() && position == mShots.size) {
+          if (!isLoading) {
+            mPage += 1
+            getShots(true)
+          }
         }
 
+      }
 
-    }
+    })
+
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    mPresenter.unSubsrciber()
+  }
+
+  override fun showProgress() {
+
+  }
+
+  override fun hideProgress() {
+//        mRefresh.isRefreshing = false
+//    mRefresh.finishRefresh()
+  }
 
 
-    private fun mountList(shots: MutableList<Shot>) {
-        mShots.clear()
-        mShots.addAll(shots)
-        mListAdapter = ItemShotAdapter(mShots,{
-            EventBus.getDefault().postSticky(mShots[it])
-            startDetailsActivity()
-        },{
-            EventBus.getDefault().postSticky(shots[it].user)
-            startActivity(Intent(activity,UserActivity::class.java))
-        })
-        mRecycleView.adapter = mListAdapter
-    }
+  override fun getShotSuccess(shots: MutableList<Shot>?, isLoadMore: Boolean) {
+    finishRefresh(isLoadMore)
 
-    override fun getShotFailed(msg: String, isLoadMore: Boolean) {
-        isLoading = false
-        toast(msg)
-        if (!isLoadMore){
-            if (mListAdapter == null){
-                showErrorImg(mErrorLayout,msg,R.mipmap.img_network_error_2)
-            }else{
-                mListAdapter?.loadError {
-                    getShots(true)
-                }
-            }
+    isLoading = false
+    if (shots != null && shots.isNotEmpty()) {
+      if (!isLoadMore) {
+        mountList(shots)
+      } else {
+        mListAdapter?.addItems(shots)
+      }
+    } else {
+      if (!isLoadMore) {
+        showErrorImg(mErrorLayout)
+      } else {
+        mListAdapter?.loadError {
+          getShots(true)
         }
+      }
     }
+  }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mSort = arguments?.getString(SORT)
-    }
 
-    override fun onBackPresses() {
-        super.onBackPresses()
-    }
+  private fun mountList(shots: MutableList<Shot>) {
+    mShots.clear()
+    mShots.addAll(shots)
+    mListAdapter = ItemShotAdapter(mShots, {
+      EventBus.getDefault().postSticky(mShots[it])
+      startDetailsActivity()
+    }, {
+      EventBus.getDefault().postSticky(shots[it].user)
+      startActivity(Intent(activity, UserActivity::class.java))
+    })
+    mRecycleView.adapter = mListAdapter
+  }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?) {
-        super.onKeyDown(keyCode, event)
+  override fun getShotFailed(msg: String, isLoadMore: Boolean) {
+    finishRefresh(isLoadMore)
+    isLoading = false
+    toast(msg)
+    if (!isLoadMore) {
+      if (mListAdapter == null) {
+        showErrorImg(mErrorLayout, msg, R.mipmap.img_network_error_2)
+      } else {
+        mListAdapter?.loadError {
+          getShots(true)
+        }
+      }
     }
+  }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+  private fun finishRefresh(isLoadMore: Boolean) {
+    if (isLoadMore) {
+      mRefresh.finishLoadmore()
+    } else {
+      mRefresh.finishRefresh()
     }
+  }
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    mSort = arguments?.getString(SORT)
+  }
+
+  override fun onBackPresses() {
+    super.onBackPresses()
+  }
+
+  override fun onKeyDown(keyCode: Int, event: KeyEvent?) {
+    super.onKeyDown(keyCode, event)
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+  }
 }
 
-private operator fun Any.setValue(shotsFragment: ShotsFragment, property: KProperty<*>, mutableList: MutableList<Shot>) {}
+private operator fun Any.setValue(shotsFragment: ShotsFragment, property: KProperty<*>,
+    mutableList: MutableList<Shot>) {
+}

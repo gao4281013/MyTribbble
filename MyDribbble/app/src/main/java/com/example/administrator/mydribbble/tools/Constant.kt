@@ -28,6 +28,27 @@ class Constant {
     }
 }
 
+class Parameters {
+    companion object {
+        //sort
+        val COMMENTS = "comments"
+        val RECENT = "recent"
+        val VIEWS = "views"
+        //list
+        val ANIMATED = "animated"
+        val ATTACHMENTS = "accachments"
+        val DEBUTS = "debuts"
+        val PLAYOFFS = "playoffs"
+        val REBOUNDS = "rebounds"
+        val TEAMS = "teams"
+        //timeframe
+        val WEEK = "week"
+        val MONTH = "month"
+        val YEAR = "year"
+        val EVER = "ever"
+    }
+}
+
 
     object singleData {
         var token: String? = null

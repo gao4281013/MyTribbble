@@ -1,14 +1,13 @@
 package com.example.administrator.mydribbble.view.fragment
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.example.administrator.mydribbble.R
+import com.example.administrator.mydribbble.view.dialog.DialogManager
 
 /**
  * A simple [Fragment] subclass.
@@ -19,6 +18,9 @@ import com.example.administrator.mydribbble.R
  * create an instance of this fragment.
  */
 class BunketsFragment : BaseFragment() {
+    private val mDialogManager:DialogManager by lazy {
+        DialogManager(activity)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

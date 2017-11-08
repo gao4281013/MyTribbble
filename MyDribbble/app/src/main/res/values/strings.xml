@@ -56,4 +56,39 @@
   <string name="follow_failed">follow failed</string>
   <string name="un_follow_success">unfollow success</string>
   <string name="un_follow_failed">unfollow failed</string>
+  <string name="sort">sort</string>
+  <string name="now">now</string>
+  <string name="week">week</string>
+  <string name="month">month</string>
+  <string name="year">year</string>
+  <string name="ever">ever</string>
+  <string name="buckets">Buckets</string>
+
+
+  <string-array name="sorts">
+    <!--最受欢迎的-->
+    <item>Popular</item>
+    <!--评论最多的-->
+    <item>Most commented</item>
+    <!--最近的-->
+    <item>Most recent</item>
+    <!--浏览量最大的-->
+    <item>Most viewed</item>
+  </string-array>
+  <string-array name="sort_list">
+    <!--任何作品-->
+    <item>Any</item>
+    <!--动画-->
+    <item>Animated</item>
+    <!--携带附件的-->
+    <item>With attachments</item>
+    <!--初次上线的-->
+    <item>Debuts</item>
+    <!--季度精选-->
+    <item>Playoffs</item>
+    <!--回炉重造  再创作-->
+    <item>Rebounds</item>
+    <!--团队作品-->
+    <item>Teamwork</item>
+  </string-array>
 </resources>

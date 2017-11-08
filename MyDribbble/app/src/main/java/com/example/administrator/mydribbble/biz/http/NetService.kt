@@ -133,4 +133,74 @@ interface NetService {
         @NotNull @Field("access_token") access_token: String):Observable<NullResponse>
 
 
+    /**
+     * 获取一个bucket中的shot列表
+     * @param access_token token 默认值为公用token
+     * @param id 这个bucket的id
+     * @param page 获取那一夜
+     *
+     * @return MutableList<Shot>
+     * */
+
+    @GET("bucket/{id}/shots") fun getBucketShots(@NotNull @Path("id") id:Long,
+        @NotNull @Query("access_token") access_token: String,
+        @Query("page") page: Int?):Observable<MutableList<Shot>>
+
+
+    /**
+     * 获取当前用户bucket列表
+     *
+     * */
+    @GET("user/buckets") fun getMyBuckets(@NotNull @Query("access_token") access_token: String,
+        @Query("page") page: Int?=100):Observable<MutableList<Bucket>>
+
+    /**
+     * 创建一个bucket
+     * @param access_token
+     * @param description bucket描述
+     * @param name bucket名
+     * */
+    @FormUrlEncoded
+    @POST("buckets") fun createBucket(@NotNull @Field("access_token") access_token: String,
+        @NotNull @Field("name") name:String,
+        @NotNull @Field("description") description:String?):Observable<Bucket>
+
+
+    /**
+     * 删除一个bucket
+     * */
+    @DELETE("bucket/{id}") fun deleteBucket(@NotNull @Path("id") id: Long,
+        @NotNull @Query("access_token") access_token: String):Observable<Bucket>
+
+    /**
+     * 修改一个bucket
+     * */
+    @FormUrlEncoded
+    @PUT("buckets/{id}") fun modifyBucket(@NotNull @Path("id") id: Long,
+        @NotNull @Field("access_token") access_token: String,
+        @NotNull @Field("name") name: String,
+        @NotNull @Field("description") description: String?):Observable<Bucket>
+
+
+    /**
+     * 删除bucket重的一个shot
+     * @param access_token 默认值为公用token
+     * @param id 这个bucket 的id
+     * @param shot_id 要删除的shot的id
+     * */
+    @DELETE("bucket/{id}/shots")fun removeShotFromBucket(@NotNull @Path("id") id: Long,
+        @NotNull @Query("access_token") access_token: String,
+        @Query("shot_id")shot_id:Long?):Observable<Shot>
+
+
+    /**
+     * 添加一个shot到一个bucket
+     * @param access_token 默认值为公用token·
+     * @param id 这个bucket 的id
+     * @param shot_id 要添加的shot的id
+     * */
+    @FormUrlEncoded
+    @PUT("buckets/{id}/shots")fun addShot2Bucket(@NotNull @Path("id") id: Long,
+        @NotNull @Field("access_token") access_token: String,
+        @Field("shot_id") shot_id: Long?):Observable<Shot>
 }
