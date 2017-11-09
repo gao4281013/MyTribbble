@@ -41,8 +41,7 @@ interface NetService {
      * 获取登录的用户的个人信息
      * @param access_token 登录后获得的用户的token
      * */
-    @FormUrlEncoded
-    @POST("/oauth/token") fun getMyInfo(@NotNull @Query("access_token") access_token: String):Observable<User>
+    @GET("user") fun getMyInfo(@NotNull @Query("access_token") access_token: String):Observable<User>
 
 
     /**

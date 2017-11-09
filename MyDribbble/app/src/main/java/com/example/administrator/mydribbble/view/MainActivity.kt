@@ -215,8 +215,8 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
 
     override fun getTokenSuccess(token: Token?) {
         if (token!=null){
-            QuickSimpleIO.setString(Constant.KEY_TOKEN,token.acess_token)
-            singleData.token = token.acess_token
+            QuickSimpleIO.setString(Constant.KEY_TOKEN,token.access_token)
+            singleData.token = token.access_token
             toast(resources.getString(R.string.login_success))
             initUser()
         }else{
