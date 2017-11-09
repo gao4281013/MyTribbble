@@ -6,9 +6,9 @@ package com.example.administrator.mydribbble.entity
 class Bucket {
 
   val id:Long =0
-  val name:String?=""
-  val description:String?=null
+  var name:String?=""
+  var description:String?=null
   val shots_count:Int = 0
   val created_at:String?=""
-  val updated_at:String?=""
+  var updated_at:String?=""
 }
