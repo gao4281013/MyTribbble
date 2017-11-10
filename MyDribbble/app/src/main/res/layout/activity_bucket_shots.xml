@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/bucket_shot_layout"
     tools:context="com.example.administrator.mydribbble.view.activity.BucketShotsActivity"
     >
 
-</android.support.constraint.ConstraintLayout>
+  <android.support.design.widget.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/AppTheme.AppBarOverlay"
+      app:layout_scrollFlags="scroll|enterAlways"
+      >
+    <View
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/status_bar_height"
+        android:background="@color/colorPrimaryDark"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/bucket_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        />
+  </android.support.design.widget.AppBarLayout>
+  <include layout="@layout/list"/>
+
+  <include layout="@layout/error_layout"/>
+
+</android.support.design.widget.CoordinatorLayout>

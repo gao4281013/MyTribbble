@@ -187,6 +187,7 @@ class BunketsFragment : BaseFragment(), IMyBucketsView {
 
 
   override fun getBucketsSuccess(buckets: MutableList<Bucket>?) {
+    finishRefresh(false)
     if (buckets != null) {
       mBuckets.clear()
       mBuckets.addAll(buckets)
@@ -225,6 +226,7 @@ class BunketsFragment : BaseFragment(), IMyBucketsView {
   }
 
   override fun getBucketsFailed(msg: String) {
+    finishRefresh(false)
     toast(msg)
     if (madapter == null) {
       showErrorImg(mErrorLayout, msg, R.mipmap.img_empty_buckets)
@@ -293,4 +295,11 @@ class BunketsFragment : BaseFragment(), IMyBucketsView {
     toast("${resources.getString(R.string.add_failed)}:$msg")
   }
 
+  private fun finishRefresh(isLoadMore: Boolean) {
+    if (isLoadMore) {
+      mRefresh.finishLoadmore()
+    } else {
+      mRefresh.finishRefresh()
+    }
+  }
 }

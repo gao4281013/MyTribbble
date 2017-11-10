@@ -146,7 +146,7 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         })
     }
 
-    /**
+    /**n
      * 用浏览器打开验证链接，通过我们的CLIENT_ID去获取一个code吗用来获取用户的token
      * */
     private fun login() {

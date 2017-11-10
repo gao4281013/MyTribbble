@@ -43,7 +43,9 @@
     <activity
         android:name=".view.activity.DetailsActivity"
         android:theme="@style/DetailsTheme"/>
-    <activity android:name=".view.activity.UserActivity"/>
+    <activity android:name=".view.activity.UserActivity"
+        android:theme="@style/ImageFullTheme"
+        />
     <activity android:name=".view.activity.SettingActivity"/>
     <activity android:name=".view.activity.SearchActivity">
     </activity>
@@ -52,13 +54,17 @@
         android:label="@string/title_activity_navi"
         android:theme="@style/AppTheme">
     </activity>
-    <activity android:name=".view.activity.ImageFullActivity">
+    <activity android:name=".view.activity.ImageFullActivity"
+        android:theme="@style/ImageFullTheme"
+        >
     </activity>
     <activity
         android:name=".view.activity.LisenseActivity"
         android:theme="@style/Lisense_Dialog">
     </activity>
-    <activity android:name=".view.activity.BucketShotsActivity">
+    <activity android:name=".view.activity.BucketShotsActivity"
+        android:theme="@style/TransparentTheme"
+        >
     </activity>
   </application>
 

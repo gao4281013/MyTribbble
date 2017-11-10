@@ -202,4 +202,10 @@ interface NetService {
     @PUT("buckets/{id}/shots")fun addShot2Bucket(@NotNull @Path("id") id: Long,
         @NotNull @Field("access_token") access_token: String,
         @Field("shot_id") shot_id: Long?):Observable<Shot>
+
+    /**
+     * 获取用户like列表
+     * */
+    @GET("/user/likes") fun getMyLikes(@NotNull @Query("access_token") access_token: String,
+        @Query("page")page: Int?):Observable<MutableList<Like>>
 }

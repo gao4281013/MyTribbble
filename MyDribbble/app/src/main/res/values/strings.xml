@@ -79,6 +79,7 @@
   <string name="add_success">add success</string>
   <string name="add_failed">add failed</string>
   <string name="modify_failed">modify failed</string>
+  <string name="no_likes">no likes</string>
 
 
   <string-array name="sorts">
