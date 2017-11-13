@@ -187,7 +187,7 @@ interface NetService {
      * @param id 这个bucket 的id
      * @param shot_id 要删除的shot的id
      * */
-    @DELETE("bucket/{id}/shots")fun removeShotFromBucket(@NotNull @Path("id") id: Long,
+    @DELETE("buckets/{id}/shots")fun removeShotFromBucket(@NotNull @Path("id") id: Long,
         @NotNull @Query("access_token") access_token: String,
         @Query("shot_id")shot_id:Long?):Observable<Shot>
 
@@ -206,6 +206,6 @@ interface NetService {
     /**
      * 获取用户like列表
      * */
-    @GET("/user/likes") fun getMyLikes(@NotNull @Query("access_token") access_token: String,
+    @GET("user/likes") fun getMyLikes(@NotNull @Query("access_token") access_token: String,
         @Query("page")page: Int?):Observable<MutableList<Like>>
 }

@@ -18,7 +18,6 @@ import com.example.administrator.mydribbble.tools.hasNavigationBar
 import kotlinx.android.synthetic.main.item_card_bottom.view.*
 import kotlinx.android.synthetic.main.item_card_head.view.*
 import kotlinx.android.synthetic.main.item_shots.view.*
-import kotlinx.android.synthetic.main.nav_header.view.*
 import kotlinx.android.synthetic.main.pull_up_load_layout.view.*
 
 /**
@@ -44,8 +43,8 @@ class LikeAdapter(var mLikes:MutableList<Like>,val itemClick:(View,Int) -> Unit,
            itemClick.invoke(holder.itemView.mItemCard,position)
          }
 
-         holder.itemView.mUserHead.setOnClickListener {
-           userClick.invoke(holder.itemView.mUserHead,position)
+         holder.itemView.mHeadLayout.setOnClickListener {
+           userClick.invoke(holder.itemView.mHeadLayout,position)
          }
          addCardAnimation(holder.itemView.mItemCard)
        }
